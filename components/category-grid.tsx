@@ -1,8 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
-import Image from 'next/image'
+import { ArrowRight, Eye, ShoppingCart } from 'lucide-react'
 
 const categories = [
   {
@@ -105,103 +104,134 @@ const categories = [
   },
 ]
 
-const containerVariants = {
-  hidden: { opacity: 0 },
+const rowVariants = {
+  hidden: (isReversed: boolean) => ({ opacity: 0, x: isReversed ? 80 : -80 }),
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2
-    }
+    x: 0,
+    transition: { duration: 0.7, ease: 'easeOut' }
   }
 }
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
+const imageVariants = {
+  hidden: { opacity: 0, scale: 0.85 },
   visible: {
     opacity: 1,
-    y: 0,
+    scale: 1,
     transition: { duration: 0.6, ease: 'easeOut' }
-  },
-  hover: {
-    y: -10,
-    transition: { duration: 0.3 }
+  }
+}
+
+const contentVariants = {
+  hidden: (isReversed: boolean) => ({ opacity: 0, x: isReversed ? -40 : 40 }),
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6, ease: 'easeOut', delay: 0.15 }
   }
 }
 
 export function CategoryGrid() {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-background/50">
-      <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Our Categories
-          </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Explore our premium selection of sportswear and tactical gear
-          </p>
-        </motion.div>
+    <section className="py-20 w-full px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-background/50">
+      {/* Section Header */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="text-center mb-16"
+      >
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          Our Categories
+        </h2>
+        <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          Explore our premium selection of sportswear and tactical gear
+        </p>
+      </motion.div>
 
-        {/* Category Grid */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {categories.map((category) => (
+      {/* Category List — one category per row, full width of the screen */}
+      <div className="w-full flex flex-col gap-6">
+        {categories.map((category, index) => {
+          const isReversed = index % 2 === 1
+          return (
             <motion.div
               key={category.id}
-              variants={cardVariants}
-              whileHover="hover"
-              className={`glass rounded-xl p-6 border border-white/10 cursor-pointer group overflow-hidden relative`}
+              custom={isReversed}
+              variants={rowVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-100px' }}
+              whileHover={{ y: -6 }}
+              className={`glass rounded-xl border border-white/10 cursor-pointer group overflow-hidden flex flex-col ${
+                isReversed ? 'md:flex-row-reverse' : 'md:flex-row'
+              }`}
             >
-              {/* Background gradient */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${category.color} -z-10`} />
-
-              <div className="flex items-start justify-between mb-4">
-                <span className="text-4xl">{category.icon}</span>
-                <motion.div
-                  whileHover={{ x: 5 }}
-                  className="text-primary opacity-0 group-hover:opacity-100 transition-opacity"
-                >
-                  <ArrowRight className="w-5 h-5" />
-                </motion.div>
-              </div>
-
-              <h3 className="text-xl font-bold text-white mb-3">
-                {category.name}
-              </h3>
-
-              {/* Features */}
-              <ul className="space-y-2 mb-6">
-                {category.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center gap-2 text-gray-300 text-sm">
-                    <span className="w-1.5 h-1.5 bg-primary rounded-full" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-
-              {/* View Category Link */}
-              <motion.button
-                whileHover={{ x: 5 }}
-                className="text-primary font-semibold text-sm flex items-center gap-2 hover:gap-3 transition-all"
+              {/* Icon / preview area with hover actions */}
+              <motion.div
+                variants={imageVariants}
+                className={`relative w-full md:w-2/5 aspect-[16/9] md:aspect-auto md:min-h-[280px] bg-gradient-to-br ${category.color} flex items-center justify-center overflow-hidden`}
               >
-                View Category
-                <ArrowRight className="w-4 h-4" />
-              </motion.button>
+                <motion.span
+                  className="text-7xl md:text-8xl"
+                  whileHover={{ scale: 1.15 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {category.icon}
+                </motion.span>
+
+                {/* Hover overlay: view + add to cart */}
+                <motion.div className="absolute inset-0 bg-black/50 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    aria-label={`Add ${category.name} to cart`}
+                    className="bg-primary text-background p-3 rounded-full shadow-md hover:shadow-lg transition-shadow"
+                  >
+                    <ShoppingCart className="w-5 h-5" />
+                  </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    aria-label={`View ${category.name}`}
+                    className="bg-white/20 text-white p-3 rounded-full hover:bg-white/30 transition-colors"
+                  >
+                    <Eye className="w-5 h-5" />
+                  </motion.button>
+                </motion.div>
+              </motion.div>
+
+              {/* Content */}
+              <motion.div
+                variants={contentVariants}
+                className="w-full md:w-3/5 p-8 md:p-10 flex flex-col justify-center"
+              >
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                  {category.name}
+                </h3>
+
+                {/* Features */}
+                <ul className="flex flex-wrap gap-x-6 gap-y-2 mb-6">
+                  {category.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-center gap-2 text-gray-300 text-sm">
+                      <span className="w-1.5 h-1.5 bg-primary rounded-full" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* View Category Link */}
+                <motion.button
+                  whileHover={{ x: 5 }}
+                  className="text-primary font-semibold text-sm flex items-center gap-2 hover:gap-3 transition-all self-start"
+                >
+                  View Category
+                  <ArrowRight className="w-4 h-4" />
+                </motion.button>
+              </motion.div>
             </motion.div>
-          ))}
-        </motion.div>
+          )
+        })}
       </div>
     </section>
   )
