@@ -30,7 +30,7 @@ export function WhatsAppButton() {
           Have questions? Our team is here to help you find the perfect gear.
         </p>
         <motion.a
-          href="https://wa.me/1234567890"
+          href="https://wa.me/923236909099"
           target="_blank"
           rel="noopener noreferrer"
           whileHover={{ scale: 1.05 }}
