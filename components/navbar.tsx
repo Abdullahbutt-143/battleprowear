@@ -55,10 +55,10 @@ export function Navbar() {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center gap-8">
-              <a href="#home" className="text-gray-300 hover:text-white transition-colors">
+              <a href="#home" className="text-primary font-semibold transition-colors">
                 Home
               </a>
-              
+
               {/* Shop Dropdown */}
               <div className="relative group">
                 <button className="text-gray-300 hover:text-white transition-colors flex items-center gap-1">
@@ -151,7 +151,7 @@ export function Navbar() {
         transition={{ duration: 0.2 }}
       >
         <div className="px-4 py-4 space-y-3">
-          <a href="#home" className="block text-gray-300 hover:text-primary transition-colors py-2">
+          <a href="#home" className="block text-primary font-semibold transition-colors py-2">
             Home
           </a>
           <button
