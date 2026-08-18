@@ -21,8 +21,8 @@ const cards = [
   {
     icon: Mail,
     title: 'Email Us',
-    lines: ['support@battlepro.com'],
-    href: 'mailto:support@battlepro.com',
+    lines: ['info@battlepro.com'],
+    href: 'mailto:info@battlepro.com',
     color: 'from-orange-500 to-pink-500',
   },
   {

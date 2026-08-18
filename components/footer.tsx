@@ -62,7 +62,7 @@ const footerSections = [
 const contactInfo = [
   { icon: MapPin, label: '123 Sports Avenue, Athletic City, AC 12345' },
   { icon: Phone, label: '+1 (555) 123-4567' },
-  { icon: Mail, label: 'support@battlepro.com' },
+  { icon: Mail, label: 'info@battlepro.com' },
   { icon: Clock, label: 'Mon - Fri: 9AM - 6PM EST' },
 ]
 
