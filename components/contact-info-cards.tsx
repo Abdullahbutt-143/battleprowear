@@ -7,9 +7,15 @@ import { TiltCard } from './tilt-card'
 const cards = [
   {
     icon: MapPin,
-    title: 'Visit Us',
-    lines: ['123 Sports Avenue', 'Athletic City, AC 12345'],
+    title: 'Office Address',
+    lines: ['Via Monte Pelmo 37', 'Bassano del Grappa 36061, Italy'],
     color: 'from-blue-500 to-cyan-500',
+  },
+  {
+    icon: MapPin,
+    title: 'Factory Address',
+    lines: ['Sialkot Fazal Market', 'Punjab 51310, Pakistan'],
+    color: 'from-purple-500 to-indigo-500',
   },
   {
     icon: Phone,
@@ -36,7 +42,7 @@ const cards = [
 export function ContactInfoCards() {
   return (
     <section className="px-4 sm:px-6 lg:px-8 -mt-8 relative z-10">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
         {cards.map((card, idx) => {
           const Icon = card.icon
           const Wrapper = card.href ? 'a' : 'div'
