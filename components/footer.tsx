@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Clock } from 'lucide-react'
+import Link from 'next/link'
 import { Logo } from './logo'
 
 const socialLinks = [
@@ -32,10 +33,10 @@ const footerSections = [
   {
     title: 'Quick Links',
     links: [
-      { label: 'Home', href: '#home' },
+      { label: 'Home', href: '/' },
       { label: 'Shop', href: '#shop' },
-      { label: 'About', href: '#about' },
-      { label: 'Contact', href: '#contact' },
+      { label: 'About', href: '/about' },
+      { label: 'Contact', href: '/contact' },
     ]
   },
   {

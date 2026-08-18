@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { ShoppingCart, Menu, X } from 'lucide-react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { Logo } from './logo'
 
 const categories = [
@@ -21,9 +23,20 @@ const categories = [
 ]
 
 export function Navbar() {
+  const pathname = usePathname()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isShopOpen, setIsShopOpen] = useState(false)
+
+  const navLink = (href: string) =>
+    pathname === href
+      ? 'text-primary font-semibold transition-colors'
+      : 'text-gray-300 hover:text-white transition-colors'
+
+  const mobileNavLink = (href: string) =>
+    pathname === href
+      ? 'block text-primary font-semibold transition-colors py-2'
+      : 'block text-gray-300 hover:text-primary transition-colors py-2'
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10)
@@ -50,14 +63,16 @@ export function Navbar() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Logo />
+              <Link href="/">
+                <Logo />
+              </Link>
             </motion.div>
 
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center gap-8">
-              <a href="#home" className="text-primary font-semibold transition-colors">
+              <Link href="/" className={navLink('/')}>
                 Home
-              </a>
+              </Link>
 
               {/* Shop Dropdown */}
               <div className="relative group">
@@ -86,12 +101,12 @@ export function Navbar() {
                 </div>
               </div>
 
-              <a href="#about" className="text-gray-300 hover:text-white transition-colors">
+              <Link href="/about" className={navLink('/about')}>
                 About
-              </a>
-              <a href="#contact" className="text-gray-300 hover:text-white transition-colors">
+              </Link>
+              <Link href="/contact" className={navLink('/contact')}>
                 Contact
-              </a>
+              </Link>
             </div>
 
             {/* Right Icons */}
@@ -151,9 +166,9 @@ export function Navbar() {
         transition={{ duration: 0.2 }}
       >
         <div className="px-4 py-4 space-y-3">
-          <a href="#home" className="block text-primary font-semibold transition-colors py-2">
+          <Link href="/" className={mobileNavLink('/')}>
             Home
-          </a>
+          </Link>
           <button
             onClick={() => setIsShopOpen(!isShopOpen)}
             className="w-full text-left text-gray-300 hover:text-primary transition-colors py-2 flex items-center justify-between"
@@ -184,12 +199,12 @@ export function Navbar() {
               </button>
             </div>
           )}
-          <a href="#about" className="block text-gray-300 hover:text-primary transition-colors py-2">
+          <Link href="/about" className={mobileNavLink('/about')}>
             About
-          </a>
-          <a href="#contact" className="block text-gray-300 hover:text-primary transition-colors py-2">
+          </Link>
+          <Link href="/contact" className={mobileNavLink('/contact')}>
             Contact
-          </a>
+          </Link>
         </div>
       </motion.div>
     </>
