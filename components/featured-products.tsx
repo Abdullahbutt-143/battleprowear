@@ -10,7 +10,6 @@ const products = [
     id: 7,
     name: 'Performance Tee & Hoodie Set',
     category: 'Casual',
-    price: '$74.99',
     images: ['/products/activewear-tee-hoodie.jpg'],
     rating: 4.8
   },
@@ -18,7 +17,6 @@ const products = [
     id: 8,
     name: 'Tactical Plate Carrier Vest',
     category: 'Tactical',
-    price: '$189.99',
     images: ['/products/tactical-plate-carrier.jpg'],
     rating: 4.9
   },
@@ -26,7 +24,6 @@ const products = [
     id: 9,
     name: 'Signature Snapback Collection',
     category: 'Headwear',
-    price: '$34.99',
     images: ['/products/headwear-collection.jpg'],
     rating: 4.7
   },
@@ -34,7 +31,6 @@ const products = [
     id: 10,
     name: 'PVC Patch Collection',
     category: 'PVC Patches',
-    price: '$14.99',
     images: ['/products/pvc-patches.jpg'],
     rating: 4.8
   },
@@ -43,7 +39,6 @@ const products = [
     id: 1,
     name: 'Pro Karate Uniform',
     category: 'Martial Arts',
-    price: '$89.99',
     images: ['/products/karate-uniform.jpg'],
     rating: 4.8
   },
@@ -51,7 +46,6 @@ const products = [
     id: 2,
     name: 'Elite Basketball Jersey',
     category: 'Basketball',
-    price: '$79.99',
     images: ['/products/basketball.jpg'],
     rating: 4.9
   },
@@ -59,7 +53,6 @@ const products = [
     id: 3,
     name: 'Pro Boxing Gloves',
     category: 'Boxing',
-    price: '$129.99',
     images: ['/products/boxing-gloves.jpg'],
     rating: 4.7
   },
@@ -67,7 +60,6 @@ const products = [
     id: 4,
     name: 'Tactical Combat Boots',
     category: 'Tactical',
-    price: '$159.99',
     images: ['/products/tactical-boots-tan.jpg', '/products/tactical-boots-black.jpg'],
     rating: 4.8
   },
@@ -75,7 +67,6 @@ const products = [
     id: 5,
     name: 'Performance Leggings',
     category: 'Fitness',
-    price: '$59.99',
     images: ['/products/performance-leggings.jpg'],
     rating: 4.9
   },
@@ -83,7 +74,6 @@ const products = [
     id: 6,
     name: 'Premium Polo Shirt',
     category: 'Casual',
-    price: '$49.99',
     images: ['/products/polo-shirt.jpg'],
     rating: 4.6
   },
@@ -219,10 +209,7 @@ export function FeaturedProducts() {
                   </div>
 
                   {/* Footer */}
-                  <div className="flex items-center justify-between pt-4 border-t border-white/10">
-                    <span className="text-2xl font-bold text-primary">
-                      {product.price}
-                    </span>
+                  <div className="flex items-center justify-end pt-4 border-t border-white/10">
                     <div className="flex items-center gap-1">
                       <span className="text-yellow-400">★</span>
                       <span className="text-gray-300 text-sm">{product.rating}</span>
