@@ -129,13 +129,16 @@ export function WhyChoose() {
           <p className="text-gray-400 text-lg mb-6">
             Join thousands of satisfied customers worldwide
           </p>
-          <motion.button
+          <motion.a
+            href="https://wa.me/923236909099"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(255, 140, 0, 0.6)' }}
             whileTap={{ scale: 0.95 }}
-            className="gradient-orange text-background font-bold py-3 px-8 rounded-lg shadow-lg transition-shadow"
+            className="inline-block gradient-orange text-background font-bold py-3 px-8 rounded-lg shadow-lg transition-shadow"
           >
             Start Shopping Now
-          </motion.button>
+          </motion.a>
         </motion.div>
       </div>
     </section>
