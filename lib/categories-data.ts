@@ -73,7 +73,6 @@ export const categoryDetails: Record<string, CategoryDetail> = {
       { id: 15, image: '/products/pvc-patches/pvc-patch-15.jpeg', name: 'Blackshadow Reaper Patch', description: 'Split red-and-grey backdrop with a hooded reaper and scythe, finished with bold raised lettering for maximum presence.' },
       { id: 16, image: '/products/pvc-patches/pvc-patch-16.jpeg', name: 'Grifoni Veneti Patch', description: 'Two-tone maroon and navy team crest featuring a fierce griffin head, built for club kits and supporter gear.' },
       { id: 17, image: '/products/pvc-patches/pvc-patch-17.jpeg', name: 'Goon Squad Gothenburg Patch', description: 'Shield patch with a cigar-smoking, goggled gorilla mascot and bannered squad name, full color on a tactical backing.' },
-      { id: 18, image: '/products/pvc-patches/pvc-patch-18.jpeg', name: 'Grifoni Veneti Patch (Alt.)', description: 'A second run of the Grifoni Veneti griffin crest, same bold maroon and navy split with gold detailing.' },
       { id: 19, image: '/products/pvc-patches/pvc-patch-19.jpeg', name: 'Battle Pro Wordmark Patch', description: 'Rectangular "Gear Up For Battle" wordmark patch with a red star and stripes accent — a clean add-on for any kit.' },
     ],
     reviews: [
