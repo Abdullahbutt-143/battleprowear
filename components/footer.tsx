@@ -211,7 +211,6 @@ export function Footer() {
           <div className="flex gap-6 mt-4 md:mt-0">
             <a href="#privacy" className="hover:text-primary transition-colors">Privacy Policy</a>
             <a href="#terms" className="hover:text-primary transition-colors">Terms of Service</a>
-            <a href="#cookies" className="hover:text-primary transition-colors">Cookie Policy</a>
           </div>
         </motion.div>
       </div>
