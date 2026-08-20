@@ -6,21 +6,7 @@ import { ShoppingCart, Menu, X } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Logo } from './logo'
-
-const categories = [
-  'Martial Arts Uniforms',
-  'Basketball Uniforms',
-  'Boxing Gloves',
-  'Mechanics Gloves',
-  'Tactical Holsters',
-  'Tactical Patches',
-  'Tactical Pouches',
-  'Magazine Pouches',
-  'Fitness Leggings',
-  'Tracksuits',
-  'Casual Apparel',
-  'Polo Shirts'
-]
+import { categoryList } from '@/lib/categories-data'
 
 export function Navbar() {
   const pathname = usePathname()
@@ -87,14 +73,14 @@ export function Navbar() {
                 <div className="absolute left-0 mt-0 w-80 glass rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
                   <div className="p-6">
                     <div className="grid grid-cols-2 gap-4">
-                      {categories.map((cat) => (
-                        <a
-                          key={cat}
-                          href={`#${cat}`}
+                      {categoryList.map((cat) => (
+                        <Link
+                          key={cat.slug}
+                          href={`/category/${cat.slug}`}
                           className="text-gray-300 hover:text-primary transition-colors text-sm"
                         >
-                          {cat}
-                        </a>
+                          {cat.name}
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -185,18 +171,16 @@ export function Navbar() {
           </button>
           {isShopOpen && (
             <div className="pl-4 space-y-2">
-              {categories.slice(0, 6).map((cat) => (
-                <a
-                  key={cat}
-                  href={`#${cat}`}
+              {categoryList.map((cat) => (
+                <Link
+                  key={cat.slug}
+                  href={`/category/${cat.slug}`}
+                  onClick={() => setIsMobileMenuOpen(false)}
                   className="block text-sm text-gray-400 hover:text-primary transition-colors"
                 >
-                  {cat}
-                </a>
+                  {cat.name}
+                </Link>
               ))}
-              <button className="text-sm text-gray-400 hover:text-primary transition-colors">
-                View All →
-              </button>
             </div>
           )}
           <Link href="/about" className={mobileNavLink('/about')}>
