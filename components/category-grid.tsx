@@ -2,107 +2,8 @@
 
 import { motion } from 'framer-motion'
 import { ArrowRight, Eye, ShoppingCart } from 'lucide-react'
-
-const categories = [
-  {
-    id: 1,
-    name: 'Martial Arts Uniforms',
-    features: ['Premium Cotton Blends', 'Reinforced Stitching', 'Authentic Designs'],
-    color: 'from-blue-500/20 to-transparent',
-    icon: '🥋'
-  },
-  {
-    id: 2,
-    name: 'Basketball Uniforms',
-    features: ['Moisture Wicking', 'Breathable Mesh', 'Ergonomic Fit'],
-    color: 'from-orange-500/20 to-transparent',
-    icon: '🏀'
-  },
-  {
-    id: 3,
-    name: 'Boxing Gloves',
-    features: ['Hand Protection', 'Superior Grip', 'Durability'],
-    color: 'from-red-500/20 to-transparent',
-    icon: '🥊'
-  },
-  {
-    id: 4,
-    name: 'Mechanics Gloves',
-    features: ['Heavy Duty', 'Precision Grip', 'Oil Resistant'],
-    color: 'from-yellow-500/20 to-transparent',
-    icon: '🧤'
-  },
-  {
-    id: 5,
-    name: 'Tactical Holsters',
-    features: ['Quick Access', 'Secure Fit', 'Military Grade'],
-    color: 'from-green-500/20 to-transparent',
-    icon: '🎖️'
-  },
-  {
-    id: 6,
-    name: 'Tactical Patches',
-    features: ['Custom Designs', 'Durable Embroidery', 'Velcro Back'],
-    color: 'from-purple-500/20 to-transparent',
-    icon: '⚔️'
-  },
-  {
-    id: 7,
-    name: 'Tactical Pouches',
-    features: ['Multiple Compartments', 'MOLLE Compatible', 'Weatherproof'],
-    color: 'from-indigo-500/20 to-transparent',
-    icon: '🎒'
-  },
-  {
-    id: 8,
-    name: 'Magazine Pouches',
-    features: ['Fast Draw', 'Secure Hold', 'Lightweight'],
-    color: 'from-cyan-500/20 to-transparent',
-    icon: '📦'
-  },
-  {
-    id: 9,
-    name: 'Fitness Leggings',
-    features: ['Compression Fit', 'High Waist Design', 'Squat Proof'],
-    color: 'from-pink-500/20 to-transparent',
-    icon: '💪'
-  },
-  {
-    id: 10,
-    name: 'Tracksuits',
-    features: ['Athletic Cut', 'Premium Fabric', 'All Weather'],
-    color: 'from-teal-500/20 to-transparent',
-    icon: '🏃'
-  },
-  {
-    id: 11,
-    name: 'Casual Apparel',
-    features: ['Modern Designs', 'Comfortable', 'Versatile'],
-    color: 'from-emerald-500/20 to-transparent',
-    icon: '👕'
-  },
-  {
-    id: 12,
-    name: 'Polo Shirts',
-    features: ['Breathable Cotton', 'Professional Look', 'Durable'],
-    color: 'from-rose-500/20 to-transparent',
-    icon: '👔'
-  },
-  {
-    id: 13,
-    name: 'Headwear',
-    features: ['Embroidered Logo', 'Adjustable Strap', 'Curved Brim'],
-    color: 'from-amber-500/20 to-transparent',
-    icon: '🧢'
-  },
-  {
-    id: 14,
-    name: 'PVC Patches',
-    features: ['Custom Molded Designs', 'Velcro Backing', 'Weatherproof'],
-    color: 'from-slate-500/20 to-transparent',
-    icon: '🛡️'
-  },
-]
+import Link from 'next/link'
+import { categoryList as categories } from '@/lib/categories-data'
 
 const rowVariants = {
   hidden: (isReversed: boolean) => ({ opacity: 0, x: isReversed ? 80 : -80 }),
@@ -190,14 +91,15 @@ export function CategoryGrid() {
                   >
                     <ShoppingCart className="w-5 h-5" />
                   </motion.button>
-                  <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    aria-label={`View ${category.name}`}
-                    className="bg-white/20 text-white p-3 rounded-full hover:bg-white/30 transition-colors"
-                  >
-                    <Eye className="w-5 h-5" />
-                  </motion.button>
+                  <Link href={`/category/${category.slug}`} aria-label={`View ${category.name}`}>
+                    <motion.span
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="bg-white/20 text-white p-3 rounded-full hover:bg-white/30 transition-colors flex items-center justify-center"
+                    >
+                      <Eye className="w-5 h-5" />
+                    </motion.span>
+                  </Link>
                 </motion.div>
               </motion.div>
 
@@ -221,13 +123,15 @@ export function CategoryGrid() {
                 </ul>
 
                 {/* View Category Link */}
-                <motion.button
-                  whileHover={{ x: 5 }}
-                  className="text-primary font-semibold text-sm flex items-center gap-2 hover:gap-3 transition-all self-start"
-                >
-                  View Category
-                  <ArrowRight className="w-4 h-4" />
-                </motion.button>
+                <Link href={`/category/${category.slug}`}>
+                  <motion.span
+                    whileHover={{ x: 5 }}
+                    className="text-primary font-semibold text-sm flex items-center gap-2 hover:gap-3 transition-all self-start"
+                  >
+                    View Category
+                    <ArrowRight className="w-4 h-4" />
+                  </motion.span>
+                </Link>
               </motion.div>
             </motion.div>
           )
