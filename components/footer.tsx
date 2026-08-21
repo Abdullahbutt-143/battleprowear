@@ -63,7 +63,7 @@ const contactInfo = [
   { icon: MapPin, label: 'Office: Via Monte Pelmo 37, Bassano del Grappa 36061, Italy' },
   { icon: MapPin, label: 'Factory: Sialkot Fazal Market, Punjab 51310, Pakistan' },
   { icon: Phone, label: '+39 328 9445839' },
-  { icon: Mail, label: 'info@battlepro.com' },
+  { icon: Mail, label: 'info@battleprowear.com' },
   { icon: Clock, label: 'Mon - Fri: 9AM - 6PM EST' },
 ]
 
