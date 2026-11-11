@@ -87,6 +87,9 @@ export function Navbar() {
                 </div>
               </div>
 
+              <Link href="/exhibition" className={navLink('/exhibition')}>
+                Exhibition
+              </Link>
               <Link href="/about" className={navLink('/about')}>
                 About
               </Link>
@@ -183,6 +186,9 @@ export function Navbar() {
               ))}
             </div>
           )}
+          <Link href="/exhibition" className={mobileNavLink('/exhibition')}>
+            Exhibition
+          </Link>
           <Link href="/about" className={mobileNavLink('/about')}>
             About
           </Link>
