@@ -35,6 +35,7 @@ const footerSections = [
     links: [
       { label: 'Home', href: '/' },
       { label: 'Shop', href: '#shop' },
+      { label: 'Exhibition', href: '/exhibition' },
       { label: 'About', href: '/about' },
       { label: 'Contact', href: '/contact' },
     ]
