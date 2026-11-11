@@ -15,6 +15,5 @@ node_modules
 .DS_Store
 node_modules/
 .next/
-.env
-.env.local
 .env.*.local
+config.bat
